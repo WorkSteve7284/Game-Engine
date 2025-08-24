@@ -9,3 +9,7 @@ src/*.cppm
 
 !src/PotatoEngine.cppm
 !src/Initialize.cppm
+
+# Visual Studio stuff
+.vs/
+vc140.pdb
