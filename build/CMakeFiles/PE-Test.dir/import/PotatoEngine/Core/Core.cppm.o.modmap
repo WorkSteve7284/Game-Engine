@@ -1,0 +1,7 @@
+-x c++-module
+-fmodule-output=CMakeFiles/PE-Test.dir/PotatoEngine.Core.pcm
+-fmodule-file=PotatoEngine.Core.Classes=CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.pcm
+-fmodule-file=PotatoEngine.Core.Classes.Component=CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm
+-fmodule-file=PotatoEngine.Core.Classes.Object=CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm
+-fmodule-file=PotatoEngine.Core.Classes.Scene=CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm
+-fmodule-file=PotatoEngine.Core.Classes.Scene_Manager=CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene_Manager.pcm

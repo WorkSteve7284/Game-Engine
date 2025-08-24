@@ -1,0 +1,120 @@
+{
+	"modules" : 
+	{
+		"PotatoEngine" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core.Classes" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core.Classes.Component" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core.Classes.Object" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core.Classes.Scene" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm",
+			"is-private" : false
+		},
+		"PotatoEngine.Core.Classes.Scene_Manager" : 
+		{
+			"bmi" : "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build/CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene_Manager.pcm",
+			"is-private" : false
+		}
+	},
+	"references" : 
+	{
+		"PotatoEngine" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.pcm"
+		},
+		"PotatoEngine.Core" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.pcm"
+		},
+		"PotatoEngine.Core.Classes" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.pcm"
+		},
+		"PotatoEngine.Core.Classes.Component" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm"
+		},
+		"PotatoEngine.Core.Classes.Object" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm"
+		},
+		"PotatoEngine.Core.Classes.Scene" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm"
+		},
+		"PotatoEngine.Core.Classes.Scene_Manager" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene_Manager.pcm"
+		}
+	},
+	"usages" : 
+	{
+		"PotatoEngine" : 
+		[
+			"PotatoEngine.Core",
+			"PotatoEngine.Core.Classes",
+			"PotatoEngine.Core.Classes.Component",
+			"PotatoEngine.Core.Classes.Object",
+			"PotatoEngine.Core.Classes.Scene",
+			"PotatoEngine.Core.Classes.Scene_Manager"
+		],
+		"PotatoEngine.Core" : 
+		[
+			"PotatoEngine.Core.Classes",
+			"PotatoEngine.Core.Classes.Component",
+			"PotatoEngine.Core.Classes.Object",
+			"PotatoEngine.Core.Classes.Scene",
+			"PotatoEngine.Core.Classes.Scene_Manager"
+		],
+		"PotatoEngine.Core.Classes" : 
+		[
+			"PotatoEngine.Core.Classes.Component",
+			"PotatoEngine.Core.Classes.Object",
+			"PotatoEngine.Core.Classes.Scene",
+			"PotatoEngine.Core.Classes.Scene_Manager"
+		],
+		"PotatoEngine.Core.Classes.Object" : 
+		[
+			"PotatoEngine.Core.Classes.Component"
+		],
+		"PotatoEngine.Core.Classes.Scene" : 
+		[
+			"PotatoEngine.Core.Classes.Component",
+			"PotatoEngine.Core.Classes.Object"
+		],
+		"PotatoEngine.Core.Classes.Scene_Manager" : 
+		[
+			"PotatoEngine.Core.Classes.Component",
+			"PotatoEngine.Core.Classes.Object",
+			"PotatoEngine.Core.Classes.Scene"
+		]
+	}
+}

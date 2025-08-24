@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/src/PotatoEngine.cpp.o.modmap -o CMakeFiles/PE-Test.dir/src/PotatoEngine.cpp.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/src/PotatoEngine.cpp",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/src/PotatoEngine.cpp",
+  "output": "CMakeFiles/PE-Test.dir/src/PotatoEngine.cpp.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/PotatoEngine.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/PotatoEngine.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/PotatoEngine.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/PotatoEngine.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/PotatoEngine.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Core.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Core.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Core.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Core.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Core.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Classes.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Classes.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Classes.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Classes.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Classes.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Component.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Component.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Component.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Component.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Component.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Object.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Object.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Object.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Object.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Object.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Scene.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Scene.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene.cppm.o"
+},
+{
+  "directory": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 @CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene_Manager.cppm.o.modmap -o CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene_Manager.cppm.o -c /home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Scene_Manager.cppm",
+  "file": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Scene_Manager.cppm",
+  "output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene_Manager.cppm.o"
+}
+]

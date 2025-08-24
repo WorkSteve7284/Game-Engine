@@ -1,0 +1,21 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Object.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "PotatoEngine.Core.Classes.Object",
+          "source-path": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Object.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "PotatoEngine.Core.Classes.Component"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

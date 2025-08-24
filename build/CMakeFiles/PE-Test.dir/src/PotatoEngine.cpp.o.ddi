@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/PE-Test.dir/src/PotatoEngine.cpp.o"
+    }
+  ],
+  "version": 1
+}

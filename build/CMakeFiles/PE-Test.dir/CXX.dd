@@ -1,0 +1,24 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/PE-Test.dir/src/PotatoEngine.cpp.o: dyndep
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/PotatoEngine.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.pcm
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Core.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.pcm
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Classes.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene_Manager.pcm
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Component.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Object.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Component.pcm
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Object.pcm
+  restat = 1
+
+build CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Scene_Manager.cppm.o | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene_Manager.pcm: dyndep | CMakeFiles/PE-Test.dir/PotatoEngine.Core.Classes.Scene.pcm
+  restat = 1
+

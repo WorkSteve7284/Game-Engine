@@ -1,0 +1,30 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/PE-Test.dir/import/PotatoEngine/Core/Classes/Classes.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "PotatoEngine.Core.Classes",
+          "source-path": "/home/vboxuser/Desktop/GameEngine/PotatoEngine/import/PotatoEngine/Core/Classes/Classes.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "PotatoEngine.Core.Classes.Component"
+        },
+        {
+          "logical-name": "PotatoEngine.Core.Classes.Object"
+        },
+        {
+          "logical-name": "PotatoEngine.Core.Classes.Scene"
+        },
+        {
+          "logical-name": "PotatoEngine.Core.Classes.Scene_Manager"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
