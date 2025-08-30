@@ -7,7 +7,7 @@ src/*.c
 src/*.ixx
 src/*.cppm
 
-!src/PotatoEngine.cppm
+!src/PotatoEngine.cpp
 !src/Initialize.cppm
 
 # Visual Studio stuff
