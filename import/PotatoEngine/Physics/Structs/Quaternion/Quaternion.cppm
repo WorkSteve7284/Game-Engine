@@ -46,6 +46,7 @@ namespace PotatoEngine::Physics::Structs {
 		std::pair<Vector3<P>, P> To_Axis_Angle() const;
 		Matrix3x3<P> To_Matrix() const;
 		std::string String() const;
+		Vector3<P> Rotate(const Vector3<P>) const;
 	public: // Operators
 		Quaternion operator+(const Quaternion&) const;
 		Quaternion operator-(const Quaternion&) const;
@@ -198,6 +199,12 @@ namespace PotatoEngine::Physics::Structs {
 	template <typename P>
 	std::string Quaternion<P>::String() const {
 		return "(" + std::to_string(w) + ", " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ")";
+	}
+
+	template <typename P>
+	Vector3<P> Quaternion<P>::Rotate(const Vector3<P> vector) const {
+		Quaternion<P> temp_quat = *this * vector * Conjugate();
+		return { temp_quat.x, temp_quat.y, temp_quat.z };
 	}
 
 	template <typename P>

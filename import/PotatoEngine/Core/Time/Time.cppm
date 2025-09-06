@@ -1,7 +1,4 @@
 export module PotatoEngine.Core.Time;
 
-namespace PotatoEngine::Core::Time {
-	export double runtime;
-	export unsigned long long updates;
-	export unsigned long long fixed_updates;
-}
+export import PotatoEngine.Core.Time.TimeVariables;
+export import PotatoEngine.Core.Time.TimeKeeper;

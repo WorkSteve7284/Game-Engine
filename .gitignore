@@ -1,4 +1,4 @@
-build/
+build/*
 
 src/*.cpp
 src/*.hpp
@@ -13,3 +13,7 @@ src/*.cppm
 # Visual Studio stuff
 .vs/
 vc140.pdb
+
+# Shortcut scripts
+*.sh
+*.bat

@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_executable(PE-Test 
     src/PotatoEngine.cpp
-)
+ )
 
 include(cmake/PotatoEngine.cmake)
 include(cmake/Setup.cmake)
@@ -21,7 +21,4 @@ target_sources(PE-Test
             FILE_SET CXX_MODULES
             FILES
                 src/Stop_After_Time.cppm
-                src/Event_Reciever.cppm
-                src/Event_Broadcaster.cppm
-                src/Move_At_Speed.cppm
 )

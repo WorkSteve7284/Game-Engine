@@ -3,7 +3,7 @@ module;
 #include <exception>
 #include <string>
 
-export module PotatoEngine.Core.Exception:No_Component_Found;
+export module PotatoEngine.Core.Exception:NoComponentFound;
 
 namespace PotatoEngine::Core::Exception {
 	export class No_Component_Found : std::exception {

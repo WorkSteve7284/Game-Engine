@@ -1,21 +1,22 @@
 export module PotatoEngine.Initialize;
 
 import PotatoEngine.Core;
+//import PotatoEngine.Physics;
 
 import Stop_After_Time;
-import Event_Broadcaster;
-import Event_Reciever;
-import Move_At_Speed;
+//import Event_Broadcaster;
+//import Event_Reciever;
+//import Move_At_Speed;
 
 namespace PotatoEngine {
 	export void Initialize(Manager* manager) {
-		PotatoEngine::Get_Manager = [manager]() { return manager; };
+		PotatoEngine::Core::manager = manager;
 
-		manager->Add_Object_With_Component_No_Start<Stop_After_Time>(0.5);
+		Object* controller = manager->add_object_ns();
+		
+		Core::Time::Scheduler = controller->add_component_ns<Core::Time::TimeKeeper>();
 
-		//Object& event_object = manager->Add_Object_With_Component_No_Start<Event_Broadcaster>(15);
-		//event_object.Add_Component_With_Type_No_Start<Event_Reciever>();
+		manager->add_object_with_component_ns<Stop_After_Time>(0.1);
 
-		manager->Add_Object_With_Component_No_Start<Move_At_Speed>(1);
 	}
 }

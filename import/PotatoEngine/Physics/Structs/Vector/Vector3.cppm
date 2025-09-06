@@ -50,7 +50,7 @@ namespace PotatoEngine::Physics::Structs {
 	};
 
 	export template <typename P>
-	inline Vector3<P> operator*(const Vector3<P>&, const P&);
+	inline Vector3<P> operator*(const P&, const Vector3<P>& );
 
 	template <typename P>
 	P Vector3<P>::Sqr_Magnitude() const {
@@ -128,7 +128,7 @@ namespace PotatoEngine::Physics::Structs {
 	}
 
 	template <typename P>
-	inline Vector3<P> operator*(const Vector3<P>& vec, const P& scalar) {
+	inline Vector3<P> operator*(const P& scalar, const Vector3<P>& vec) {
 		return vec * scalar;
 	}
 

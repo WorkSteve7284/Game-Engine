@@ -1,4 +1,5 @@
-#include <chrono>
+#include <string>
+#include <format>
 
 import PotatoEngine.Core;
 import PotatoEngine.Initialize;
@@ -10,12 +11,12 @@ int main() {
 
 	PotatoEngine::Initialize(&manager);
 
-	manager.Start();
+	manager.start();
 
-	manager.Run();
+	manager.run();
 
-	Debug::Debug.Log("Stopping after " + std::to_string(Time::runtime) + " seconds");
-	Debug::Debug.Log("Updated " + std::to_string(Time::updates) + " times");
-	Debug::Debug.Log("Fixed Updated " + std::to_string(Time::fixed_updates) + " times");
+	Debug::Debug.log(std::format("Ran for {} seconds", Time::runtime));
+	Debug::Debug.log(std::format("Updated {} times", Time::updates));
+	Debug::Debug.log(std::format("Fixed Updated {} times", Time::fixed_updates));
 
 }
