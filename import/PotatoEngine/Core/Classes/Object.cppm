@@ -9,6 +9,7 @@ module;
 export module PotatoEngine.Core.Classes.Object;
 
 import PotatoEngine.Core.Classes.Component;
+import PotatoEngine.Core.Classes.SafePtr;
 import PotatoEngine.Core.Event;
 import PotatoEngine.Core.Exception;
 
@@ -24,7 +25,7 @@ namespace PotatoEngine::Core::Classes {
         Object& operator=(const Object&) = delete;
 
     public: // Functions
-        Object* parent;
+        
         std::function<std::uint_fast64_t(void)> New_UID = []() { return 0; };
 
         void start();
@@ -32,26 +33,26 @@ namespace PotatoEngine::Core::Classes {
         void fixed_update(double);
         void physics_update(double);
 
-        template <typename C, typename... Args> C* add_component(Args&&...);
-        template <typename C, typename... Args> C* add_component_ns(Args&&...);
+        template <typename C, typename... Args> SafePtr<C> add_component(Args&&...);
+        template <typename C, typename... Args> SafePtr<C> add_component_ns(Args&&...);
 
-        Object* add_object();
-        Object* add_object_ns();
+        SafePtr<Object> add_object();
+        SafePtr<Object> add_object_ns();
 
-        template <typename C, typename... Args> Object* add_object_with_component_ns(Args&&...);
-        template <typename C, typename... Args> Object* add_object_with_component(Args&&...);
+        template <typename C, typename... Args> SafePtr<Object> add_object_with_component_ns(Args&&...);
+        template <typename C, typename... Args> SafePtr<Object> add_object_with_component(Args&&...);
 
         template <typename C> bool has_component();
-        template <typename C> C* find_component();
+        template <typename C> SafePtr<C> find_component();
 
-        Object* find_object_with_name(std::string);
-        Object* find_object_with_uid(std::uint_fast64_t);
-        Object* find_object_with_tag(std::string);
-        Object* find_object_with_tags(std::vector<std::string>);
+        SafePtr<Object> find_object_with_name(std::string);
+        SafePtr<Object> find_object_with_uid(std::uint_fast64_t);
+        SafePtr<Object> find_object_with_tag(std::string);
+        SafePtr<Object> find_object_with_tags(std::vector<std::string>);
 
-        inline Object* find_object(std::string find_name) { return find_object_with_name(find_name); }
-        inline Object* find_object(std::uint_fast64_t find_uid) { return find_object_with_uid(find_uid); }
-        inline Object* find_object(std::vector<std::string> tags) { return find_object_with_tags(tags); }
+        inline SafePtr<Object> find_object(std::string find_name) { return find_object_with_name(find_name); }
+        inline SafePtr<Object> find_object(std::uint_fast64_t find_uid) { return find_object_with_uid(find_uid); }
+        inline SafePtr<Object> find_object(std::vector<std::string> tags) { return find_object_with_tags(tags); }
 
 
         std::vector<std::string> get_tags();
@@ -62,6 +63,7 @@ namespace PotatoEngine::Core::Classes {
         void rehash_name();
 
     public: // Member Variables
+        Object* parent;
 
         PotatoEngine::Core::Event::EventManager events;
 
@@ -89,8 +91,8 @@ using namespace PotatoEngine::Core::Classes;
 
 // Templated Function Definitions
 template <typename C, typename... Args>
-Object* Object::add_object_with_component_ns(Args&&... args) {
-    Object* object = add_object_ns();
+SafePtr<Object> Object::add_object_with_component_ns(Args&&... args) {
+    SafePtr<Object> object = add_object_ns();
 
     object->add_component_ns<C>(args...);
 
@@ -98,16 +100,16 @@ Object* Object::add_object_with_component_ns(Args&&... args) {
 }
 
 template <typename C, typename... Args>
-Object* Object::add_object_with_component(Args&&... args) {
-    Object* object = add_object_with_component_ns<C>(args...);
+SafePtr<Object> Object::add_object_with_component(Args&&... args) {
+    SafePtr<Object> object = add_object_with_component_ns<C>(args...);
 
-    object->Start();
+    object->start();
 
     return object;
 }
 
 template <typename C, typename... Args>
-C* Object::add_component_ns(Args&&... args) {
+SafePtr<C> Object::add_component_ns(Args&&... args) {
     std::unique_ptr<C> component = std::make_unique<C>(args...);
     
     component->object = this;
@@ -119,19 +121,17 @@ C* Object::add_component_ns(Args&&... args) {
 }
 
 template <typename C, typename... Args>
-C* Object::add_component(Args&&... args) {
-    C* component = add_component_ns<C>(args...);
+SafePtr<C> Object::add_component(Args&&... args) {
+    SafePtr<C> component = add_component_ns<C>(args...);
 
-    component->Start();
+    component->start();
 
     return component;
 }
 
 template <typename C> bool Object::has_component() {
-    const std::type_info& c_type = typeid(C);
-
     for (auto& component : components) {
-        if (typeid(component) == c_type) {
+        if (dynamic_cast<C*>(component.get())) {
             return true;
         }
     }
@@ -140,16 +140,14 @@ template <typename C> bool Object::has_component() {
 }
 
 template <typename C>
-C* Object::find_component() {
-    const std::type_info& c_type = typeid(C);
-
+SafePtr<C> Object::find_component() {
     for (auto& component : components) {
-        if (typeid(component) == c_type) {
-            return *dynamic_cast<C*>(component.get());
+        if (auto c = dynamic_cast<C*>(component.get())) {
+            return c;
         }
     }
 
-    throw PotatoEngine::Core::Exception::No_Component_Found("No Component with specified type found!");
+    throw PotatoEngine::Core::Exception::NoComponentFound("No Component with specified type found!");
 }
 
 // Other Function Definitions
@@ -187,7 +185,7 @@ void Object::physics_update(double delta_time) {
     }
 }
 
-Object* Object::add_object_ns() {
+SafePtr<Object> Object::add_object_ns() {
     children.emplace_back(std::make_unique<Object>());
 
     children.back()->parent = this;
@@ -197,13 +195,13 @@ Object* Object::add_object_ns() {
     return children.back().get();
 }
 
-Object* Object::add_object() {
-    Object* object = add_object_ns();
+SafePtr<Object> Object::add_object() {
+    SafePtr<Object> object = add_object_ns();
     object->start();
     return object;
 }
 
-Object* Object::find_object_with_name(std::string find_name) {
+SafePtr<Object> Object::find_object_with_name(std::string find_name) {
     std::size_t find_name_hash = std::hash<std::string>()(find_name);
 
     for (auto& object : children) {
@@ -212,20 +210,20 @@ Object* Object::find_object_with_name(std::string find_name) {
         }
     }
 
-    throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified name found!");
+    throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified name found!");
 }
 
-Object* Object::find_object_with_uid(std::uint_fast64_t find_uid) {
+SafePtr<Object> Object::find_object_with_uid(std::uint_fast64_t find_uid) {
     for (auto& object : children) {
         if (object->uid == find_uid) {
             return object.get();
         }
     }
 
-    throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified UID found!");
+    throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified UID found!");
 }
 
-Object* Object::find_object_with_tag(std::string find_tag) {
+SafePtr<Object> Object::find_object_with_tag(std::string find_tag) {
     std::size_t tag_hash = std::hash<std::string>()(find_tag);
 
     for (auto& object : children) {
@@ -236,10 +234,10 @@ Object* Object::find_object_with_tag(std::string find_tag) {
         }
     }
 
-    throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified tag found!");
+    throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified tag found!");
 }
 
-Object* Object::find_object_with_tags(std::vector<std::string> find_tags) {
+SafePtr<Object> Object::find_object_with_tags(std::vector<std::string> find_tags) {
     std::vector<std::size_t> find_tags_hash(find_tags.size());
 
     std::hash<std::string> hasher;
@@ -271,7 +269,7 @@ Object* Object::find_object_with_tags(std::vector<std::string> find_tags) {
             return object.get();
     }
 
-    throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified tags found!");
+    throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified tags found!");
 }
 
 std::vector<std::string> Object::get_tags() {

@@ -8,7 +8,6 @@ module;
 export module PotatoEngine.Core.Time.TimeKeeper;
 
 import PotatoEngine.Core.Classes;
-
 import PotatoEngine.Core.Time.TimeVariables;
 
 namespace PotatoEngine::Core::Time {
@@ -41,5 +40,5 @@ namespace PotatoEngine::Core::Time {
 			[instance, target_func]() { if (instance) (instance->*target_func)(); });
 	}
 
-	export TimeKeeper* Scheduler;
+	export SafePtr<TimeKeeper> Scheduler;
 }

@@ -1,17 +1,12 @@
-module;
-
-#include <functional>
-#include <cstdint>
-
 export module PotatoEngine.Core.Classes.Component;
+
+import PotatoEngine.Core.Classes.SafePtr;
 
 namespace PotatoEngine::Core::Classes {
 
     export template <typename Object>
         class Component {
         public:
-            std::uint_fast64_t uid; // Unique ID to each component and Object
-
             Object* object = nullptr; // Pointer to the Object which owns this component. Set upon component creation.
 
             Component() = default;

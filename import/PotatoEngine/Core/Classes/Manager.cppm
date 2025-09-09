@@ -10,6 +10,7 @@ module;
 export module PotatoEngine.Core.Classes.Manager;
 
 import PotatoEngine.Core.Classes.Object;
+import PotatoEngine.Core.Classes.SafePtr;
 import PotatoEngine.Core.Exception;
 import PotatoEngine.Core.Time.TimeVariables;
 
@@ -31,20 +32,20 @@ namespace PotatoEngine::Core::Classes {
         void fixed_update(double);
         void physics_update(double);
 
-        Object* add_object();
-        Object* add_object_ns();
+        SafePtr<Object> add_object();
+        SafePtr<Object> add_object_ns();
 
-        template <typename C, typename... Args> Object* add_object_with_component(Args&&...);
-        template <typename C, typename... Args> Object* add_object_with_component_ns(Args&&...);
+        template <typename C, typename... Args> SafePtr<Object> add_object_with_component(Args&&...);
+        template <typename C, typename... Args> SafePtr<Object> add_object_with_component_ns(Args&&...);
 
-        Object* find_object_with_name(std::string);
-        Object* find_object_with_uid(std::uint_fast64_t);
-        Object* find_object_with_tag(std::string);
-        Object* find_object_with_tags(std::vector<std::string>);
+        SafePtr<Object> find_object_with_name(std::string);
+        SafePtr<Object> find_object_with_uid(std::uint_fast64_t);
+        SafePtr<Object> find_object_with_tag(std::string);
+        SafePtr<Object> find_object_with_tags(std::vector<std::string>);
 
-        inline Object* find_object(std::string find_name) { return find_object_with_name(find_name); }
-        inline Object* find_object(std::uint_fast64_t find_uid) { return find_object_with_uid(find_uid); }
-        inline Object* find_object(std::vector<std::string> find_tags) { return find_object_with_tags(find_tags); }
+        inline SafePtr<Object> find_object(std::string find_name) { return find_object_with_name(find_name); }
+        inline SafePtr<Object> find_object(std::uint_fast64_t find_uid) { return find_object_with_uid(find_uid); }
+        inline SafePtr<Object> find_object(std::vector<std::string> find_tags) { return find_object_with_tags(find_tags); }
     public:
     private:
     private:
@@ -113,13 +114,13 @@ namespace PotatoEngine::Core::Classes {
         }
     }
 
-    Object* Manager::add_object() {
-        Object* object = add_object_ns();
+    SafePtr<Object> Manager::add_object() {
+        SafePtr<Object> object = add_object_ns();
         object->start();
         return object;
     }
 
-    Object* Manager::add_object_ns() {
+    SafePtr<Object> Manager::add_object_ns() {
         std::unique_ptr<Object> object = std::make_unique<Object>();
         
         Object* object_ptr = object.get();
@@ -134,21 +135,21 @@ namespace PotatoEngine::Core::Classes {
     
     }
 
-    template <typename C, typename... Args> Object* Manager::add_object_with_component_ns(Args&&... args) {
-        Object* object = add_object_ns();
+    template <typename C, typename... Args> SafePtr<Object> Manager::add_object_with_component_ns(Args&&... args) {
+        SafePtr<Object> object = add_object_ns();
         
         object->add_component_ns<C>(args...);
 
         return object;
     }
 
-    template <typename C, typename... Args> Object* Manager::add_object_with_component(Args&&... args) {
+    template <typename C, typename... Args> SafePtr<Object> Manager::add_object_with_component(Args&&... args) {
         Object* object = add_object_with_component_ns<C>(args...);
         object->Start();
         return object;
     }
 
-    Object* Manager::find_object_with_name(std::string find_name) {
+    SafePtr<Object> Manager::find_object_with_name(std::string find_name) {
         std::size_t find_name_hash = std::hash<std::string>()(find_name);
 
         for (auto& object : top_objects) {
@@ -157,20 +158,20 @@ namespace PotatoEngine::Core::Classes {
             }
         }
 
-        throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified name found!");
+        throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified name found!");
     }
 
-    Object* Manager::find_object_with_uid(std::uint_fast64_t find_uid) {
+    SafePtr<Object> Manager::find_object_with_uid(std::uint_fast64_t find_uid) {
         for (auto& object : top_objects) {
             if (object->uid == find_uid) {
                 return object.get();
             }
         }
 
-        throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified name found!");
+        throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified name found!");
     }
 
-    Object* Manager::find_object_with_tag(std::string find_tag) {
+    SafePtr<Object> Manager::find_object_with_tag(std::string find_tag) {
         std::size_t find_tag_hash = std::hash<std::string>()(find_tag);
 
         for (auto& object : top_objects) {
@@ -181,9 +182,9 @@ namespace PotatoEngine::Core::Classes {
             }
         }
 
-        throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified name found!");
+        throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified name found!");
     }
-    Object* Manager::find_object_with_tags(std::vector<std::string> find_tags) {
+    SafePtr<Object> Manager::find_object_with_tags(std::vector<std::string> find_tags) {
         std::vector<std::size_t> find_tags_hash(find_tags.size());
 
         std::hash<std::string> hasher;
@@ -215,7 +216,7 @@ namespace PotatoEngine::Core::Classes {
                 return object.get();
         }
 
-        throw PotatoEngine::Core::Exception::No_Object_Found("No Object with specified tags found!");
+        throw PotatoEngine::Core::Exception::NoObjectFound("No Object with specified tags found!");
     }
 }
 

@@ -4,7 +4,7 @@ macro(add_modules PROJECT)
 
     target_sources(${PROJECT}
         PUBLIC
-            FILE_SET CXX_MODULES
+            FILE_SET cxx_modules TYPE CXX_MODULES
             FILES
                 src/Initialize.cppm
     )
@@ -12,7 +12,7 @@ macro(add_modules PROJECT)
     # Core
     target_sources(${PROJECT}
         PUBLIC
-            FILE_SET CXX_MODULES
+            FILE_SET cxx_modules TYPE CXX_MODULES
             FILES
                 ${CORE_MODULES}/Core.cppm
                 ${CORE_MODULES}/Using.cppm
@@ -21,12 +21,14 @@ macro(add_modules PROJECT)
                 ${CORE_MODULES}/Classes/Component.cppm
                 ${CORE_MODULES}/Classes/Object.cppm
                 ${CORE_MODULES}/Classes/Manager.cppm
+                ${CORE_MODULES}/Classes/SafePtr.cppm
                 
                 # Exception
                 ${CORE_MODULES}/Exception/Exception.cppm
                 ${CORE_MODULES}/Exception/NoComponentFound.cppm
                 ${CORE_MODULES}/Exception/NoObjectFound.cppm
                 ${CORE_MODULES}/Exception/NoFileFound.cppm
+                ${CORE_MODULES}/Exception/InvalidPointer.cppm
                 # Debug
                 ${CORE_MODULES}/Debug/Debug.cppm
                 # Time

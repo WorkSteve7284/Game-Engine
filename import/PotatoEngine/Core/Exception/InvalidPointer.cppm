@@ -3,14 +3,14 @@ module;
 #include <exception>
 #include <string>
 
-export module PotatoEngine.Core.Exception:NoObjectFound;
+export module PotatoEngine.Core.Exception:InvalidPointer;
 
 namespace PotatoEngine::Core::Exception {
-	export class NoObjectFound : std::exception {
+	export class InvalidPointer : std::exception {
 	private:
 		std::string message;
 	public:
-		NoObjectFound(std::string msg) : message(msg) {};
+		InvalidPointer(std::string msg) : message(msg) {};
 
 		const char* what() noexcept {
 			return message.c_str();

@@ -21,4 +21,6 @@ target_sources(PE-Test
             FILE_SET CXX_MODULES
             FILES
                 src/Stop_After_Time.cppm
-)
+ "src/Comp1.cppm" "src/Comp2.cppm")
+
+message(STATUS "MSVC Version: ${MSVC_VERSION}")
