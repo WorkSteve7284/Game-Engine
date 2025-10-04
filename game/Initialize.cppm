@@ -15,7 +15,7 @@ namespace PotatoEngine {
 		Time::Scheduler = controller->add_component_ns<Core::Time::TimeKeeper>();
 
 
-		Init::YAML yaml = Init::parse_yaml_file("src/prefabs/test.yaml");
+		Init::YAML yaml = Init::parse_yaml_file("test.yaml");
 		Init::parse_objects_yaml(yaml);
 
 		Init::initialize_object(manager, Init::prefabs["Object1"]);

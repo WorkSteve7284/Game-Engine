@@ -15,7 +15,7 @@ namespace PotatoEngine::Core::Debug {
 	public:
 		std::string log(std::string);
 		std::string error(std::string);
-		std::filesystem::path get_log_path();
+		std::filesystem::path get_log_path() const;
 		std::filesystem::path switch_log_path(std::filesystem::path);
 	};
 
@@ -23,7 +23,7 @@ namespace PotatoEngine::Core::Debug {
 	DebugManager::~DebugManager() { log_file.close(); }
 
 	std::string DebugManager::log(std::string message) {
-		std::time_t timestamp = std::time(&timestamp);
+		std::time_t timestamp = std::time(nullptr);
 		struct std::tm datetime = *std::localtime(&timestamp);
 
 		std::string time_message = std::format("[ {}-{}-{}, {}:{}:{} ] ", datetime.tm_mday, datetime.tm_mon, datetime.tm_year + 1900, datetime.tm_hour, datetime.tm_min, datetime.tm_sec);
@@ -36,7 +36,7 @@ namespace PotatoEngine::Core::Debug {
 	}
 
 	std::string DebugManager::error(std::string message) {
-		std::time_t timestamp = std::time(&timestamp);
+		std::time_t timestamp = std::time(nullptr);
 		struct std::tm datetime = *std::localtime(&timestamp);
 
 		std::string time_message = std::format("[ {}-{}-{}, {}:{}:{} ] ERROR: ", datetime.tm_mday, datetime.tm_mon, datetime.tm_year + 1900, datetime.tm_hour, datetime.tm_min, datetime.tm_sec);
@@ -48,7 +48,7 @@ namespace PotatoEngine::Core::Debug {
 		return time_message + message;
 	}
 
-	std::filesystem::path DebugManager::get_log_path() {
+	std::filesystem::path DebugManager::get_log_path() const {
 		return log_path;
 	}
 

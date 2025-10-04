@@ -15,7 +15,6 @@ namespace PotatoEngine::Core::Classes {
         Manager() { new_uid = [this]() { return ++uid; }; }
 
     public:
-        //std::function<std::uint_fast64_t(void)> new_uid;
 
         bool is_running() { return running; }
         bool stop() { running = false; return running; }

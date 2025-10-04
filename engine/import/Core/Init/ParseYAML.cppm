@@ -10,7 +10,7 @@ namespace PotatoEngine::Core::Init {
 	export File ignore_comments(File& file) {
 		vector<string> new_file;
 		for (size_t i = 0; i < file.get_length(); ++i) {
-			string line = file.get_line(i);
+			const string line = file.get_line(i);
 
 			string final_string = "";
 
@@ -118,8 +118,8 @@ namespace PotatoEngine::Core::Init {
 		if (yaml.get_line(0).find_first_not_of(' ', colon + 1) != string::npos) {
 
 			object.type = YAMLEntryType::KeyValue;
-			string value = yaml.get_line(0).substr(colon + 1, colon - yaml.get_line(0).size());
-			value = value.substr(value.find_first_not_of(" "), value.find_first_not_of(" ") - value.find_last_not_of(" "));
+			string value = yaml.get_line(0).substr(colon + 1);
+			value = value.substr(value.find_first_not_of(" "), value.find_last_not_of(" ") - value.find_first_not_of(" ") + 1);
 
 			// determine type:
 
@@ -127,10 +127,10 @@ namespace PotatoEngine::Core::Init {
 
 			const size_t hashed_value = hasher(value);
 
-			if (contains_only(value, "1234567890")) {
+			if (contains_only(value, "-1234567890")) {
 				object.value = stoi(value);
 			}
-			else if (contains_only(value, "1234567890.")) {
+			else if (contains_only(value, "-e1234567890.")) {
 				object.value = stod(value);
 			}
 			else if (find(bools.begin(), bools.end(), hashed_value) != bools.end()) {
