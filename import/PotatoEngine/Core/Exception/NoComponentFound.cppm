@@ -1,9 +1,6 @@
-module;
-
-#include <exception>
-#include <string>
-
 export module PotatoEngine.Core.Exception:NoComponentFound;
+
+import std;
 
 namespace PotatoEngine::Core::Exception {
 	export class NoComponentFound : std::exception {

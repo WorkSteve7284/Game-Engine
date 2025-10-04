@@ -1,20 +1,30 @@
+# CMake-generated files
 build/*
-out/
 
-src/*.cpp
-src/*.hpp
-src/*.h
-src/*.c
-src/*.ixx
-src/*.cppm
-
+# Non-Engine code
+src/*
+!src/assets/
+src/assets/*
 !src/PotatoEngine.cpp
 !src/Initialize.cppm
+!src/Components.cppm
 
-# Visual Studio stuff
+# Assets
+
+# Visual Studio & VSCode stuff
 .vs/
+.vscode/
 vc140.pdb
 
 # Shortcut scripts
 *.sh
 *.bat
+
+# Prefabs
+!src/prefabs
+src/prefabs/*
+!src/prefabs/headers/
+src/prefabs/headers/*
+
+# Generated Files
+*.log

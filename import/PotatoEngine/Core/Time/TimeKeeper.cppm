@@ -40,5 +40,5 @@ namespace PotatoEngine::Core::Time {
 			[instance, target_func]() { if (instance) (instance->*target_func)(); });
 	}
 
-	export SafePtr<TimeKeeper> Scheduler;
+	export PotatoEngine::Core::Classes::SafePtr<TimeKeeper> Scheduler;
 }

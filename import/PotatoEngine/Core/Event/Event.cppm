@@ -1,11 +1,6 @@
-module;
-
-#include <string>
-#include <unordered_map>
-#include <functional>
-#include <vector>
-
 export module PotatoEngine.Core.Event;
+
+import std;
 
 namespace PotatoEngine::Core::Event {
 	export class EventManager {

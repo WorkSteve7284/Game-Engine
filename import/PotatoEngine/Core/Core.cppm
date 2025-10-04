@@ -6,3 +6,4 @@ export import PotatoEngine.Core.Debug;
 export import PotatoEngine.Core.Using;
 export import PotatoEngine.Core.Time;
 export import PotatoEngine.Core.Event;
+export import PotatoEngine.Core.Init;

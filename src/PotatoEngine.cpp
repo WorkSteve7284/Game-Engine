@@ -1,6 +1,4 @@
-#include <string>
-#include <format>
-
+import std;
 import PotatoEngine.Core;
 import PotatoEngine.Initialize;
 

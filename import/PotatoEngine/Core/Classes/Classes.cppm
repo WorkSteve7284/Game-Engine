@@ -4,3 +4,4 @@ export import PotatoEngine.Core.Classes.Component;
 export import PotatoEngine.Core.Classes.Object;
 export import PotatoEngine.Core.Classes.Manager;
 export import PotatoEngine.Core.Classes.SafePtr;
+export import PotatoEngine.Core.Classes.ObjectMap;

@@ -1,12 +1,23 @@
-macro(add_modules PROJECT)
-
-    set(CORE_MODULES import/PotatoEngine/Core)
+function(add_modules PROJECT)
+    
+    # Convert YAML object prefabs into header files
+    if(DEFINED RELEASE)
+        file(GLOB_RECURSE PREFABS "${CMAKE_SOURCE_DIR}/src/prefabs/*.yaml")
+    
+        include(${CMAKE_SOURCE_DIR}/cmake/python.cmake)
+        foreach(PREFAB ${PREFABS})
+            run_python(${PREFAB})
+        endforeach()
+    endif()
+    
+    set(CORE_MODULES ${CMAKE_SOURCE_DIR}/import/PotatoEngine/Core)
 
     target_sources(${PROJECT}
         PUBLIC
             FILE_SET cxx_modules TYPE CXX_MODULES
             FILES
-                src/Initialize.cppm
+                ${CMAKE_SOURCE_DIR}/src/Initialize.cppm
+                ${CMAKE_SOURCE_DIR}/src/Components.cppm
     )
 
     # Core
@@ -22,7 +33,7 @@ macro(add_modules PROJECT)
                 ${CORE_MODULES}/Classes/Object.cppm
                 ${CORE_MODULES}/Classes/Manager.cppm
                 ${CORE_MODULES}/Classes/SafePtr.cppm
-                
+                ${CORE_MODULES}/Classes/ObjectMap.cppm
                 # Exception
                 ${CORE_MODULES}/Exception/Exception.cppm
                 ${CORE_MODULES}/Exception/NoComponentFound.cppm
@@ -37,6 +48,13 @@ macro(add_modules PROJECT)
                 ${CORE_MODULES}/Time/TimeKeeper.cppm
                 # Events
                 ${CORE_MODULES}/Event/Event.cppm
-                            
-     )
-endmacro()
+                # Initialization
+                ${CORE_MODULES}/Init/Init.cppm
+                ${CORE_MODULES}/Init/File.cppm
+                ${CORE_MODULES}/Init/YAML.cppm
+                ${CORE_MODULES}/Init/ParseYAML.cppm
+                ${CORE_MODULES}/Init/Prefab.cppm
+                ${CORE_MODULES}/Init/ParseObject.cppm
+                ${CORE_MODULES}/Init/CreateObject.cppm
+    )
+endfunction()

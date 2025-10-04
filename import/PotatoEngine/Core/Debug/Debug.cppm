@@ -1,13 +1,6 @@
-module;
-
-#include <string>
-#include <fstream>
-#include <filesystem>
-#include <iostream>
-#include <ctime>
-#include <format>
-
 export module PotatoEngine.Core.Debug;
+
+import std;
 
 namespace PotatoEngine::Core::Debug {
 	
@@ -30,8 +23,8 @@ namespace PotatoEngine::Core::Debug {
 	DebugManager::~DebugManager() { log_file.close(); }
 
 	std::string DebugManager::log(std::string message) {
-		time_t timestamp = time(&timestamp);
-		struct tm datetime = *localtime(&timestamp);
+		std::time_t timestamp = std::time(&timestamp);
+		struct std::tm datetime = *std::localtime(&timestamp);
 
 		std::string time_message = std::format("[ {}-{}-{}, {}:{}:{} ] ", datetime.tm_mday, datetime.tm_mon, datetime.tm_year + 1900, datetime.tm_hour, datetime.tm_min, datetime.tm_sec);
 
@@ -43,8 +36,8 @@ namespace PotatoEngine::Core::Debug {
 	}
 
 	std::string DebugManager::error(std::string message) {
-		time_t timestamp = time(&timestamp);
-		struct tm datetime = *localtime(&timestamp);
+		std::time_t timestamp = std::time(&timestamp);
+		struct std::tm datetime = *std::localtime(&timestamp);
 
 		std::string time_message = std::format("[ {}-{}-{}, {}:{}:{} ] ERROR: ", datetime.tm_mday, datetime.tm_mon, datetime.tm_year + 1900, datetime.tm_hour, datetime.tm_min, datetime.tm_sec);
 
