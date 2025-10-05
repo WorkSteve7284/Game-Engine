@@ -1,6 +1,3 @@
-engine/build/*
-
-game/build/*
 game/assets/*
 game/prefabs/*
 game/src/*

@@ -13,3 +13,5 @@ target_sources(game
 )
 
 target_link_libraries(game PRIVATE PotatoEngine)
+
+set_target_properties(game PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/game)
